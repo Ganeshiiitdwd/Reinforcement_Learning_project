@@ -282,7 +282,7 @@ policy_loss = -th.min(policy_loss_1, policy_loss_2).mean()
 
 ### C. Testing Suite: `stress_test_scratch.py`
 
-This script runs a rigorous evaluation of the trained model, focusing on edge cases that standard training metrics might miss.
+This script employs a Monte Carlo simulation approach to rigorously evaluate the trained model.
 
 #### Critical Battery Initialization
 
