@@ -422,4 +422,4 @@ python create_demo_scratch.py
 
 ## 5. Conclusion
 
-This project successfully implements a **Battery-Constrained Autonomous Agent** using Proximal Policy Optimization. By integrating resource constraints into the standard warehouse logistics problem, we created an agent capable of **dynamic decision-making**. The results—specifically the **90.6% survival rate** in critical battery states—demonstrate that Deep Reinforcement Learning is a viable solution for complex, multi-objective robotic control systems.
+This project successfully implements a **Battery-Constrained Autonomous Agent** using Proximal Policy Optimization. By integrating resource constraints into the standard warehouse logistics problem, we created an agent capable of **dynamic decision-making**. The results—specifically the **93.8% survival rate** in critical battery states—demonstrate that Deep Reinforcement Learning is a viable solution for complex, multi-objective robotic control systems.
