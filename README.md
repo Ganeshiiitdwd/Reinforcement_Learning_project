@@ -311,7 +311,7 @@ if is_critical:
 We monitored the training process over **2,000,000 timesteps**.
 
 <p style="text-align: center;">
-  <img src="graph2.jpeg" width="600" title="GRAPH 2">
+  <img src="assets/graph2.jpeg" width="600" title="GRAPH 2">
 </p>
 
 **Graph 1: Episode Reward (`rollout/ep_rew_mean`)**
@@ -321,7 +321,7 @@ We monitored the training process over **2,000,000 timesteps**.
 - **Convergence:** The reward stabilizes around **143.9**, which represents a near-perfect run (100 Delivery + 20 Pickup + Distance Bonuses - minimal Battery Costs).
 
 <p style="text-align: center;">
-  <img src="graph1.jpeg" width="600" title="GRAPH 1">
+  <img src="assets/graph1.jpeg" width="600" title="GRAPH 1">
 </p>
 
 **Graph 2: Episode Length (`rollout/ep_len_mean`)**
@@ -365,7 +365,7 @@ Here is the trained agent in action.
 - **Cyan Square:** Charging Station
 
 <p align="center">
-  <img src="final_presentation_video-looped_inf.gif" width="600" alt="Agent Demo GIF">
+  <img src="assets/final_presentation_video-looped_inf.gif" width="600" alt="Agent Demo GIF">
   <br>
   <em>Figure 3: The agent successfully identifies low battery (Red Bar), navigates to charge, picks up the package, and delivers it.</em>
 </p>
