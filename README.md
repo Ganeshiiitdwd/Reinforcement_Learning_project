@@ -13,7 +13,7 @@ A comprehensive implementation of a **Proximal Policy Optimization (PPO)** agent
 | AJAY RAJPUT     | 22BDS049    | DSAI   |
 | ANIKET SHELKE   | 22BCS010    | CSE    |
 | SHIVRAJ JAGDALE | 22BCS118    | CSE    |
-| SHREYASH KADGE  | 22BCS120    | CSE    |
+| SHREYAS KADGE  | 22BCS120    | CSE    |
 
 ## 1. Problem Statement & Motivation
 
@@ -280,7 +280,7 @@ policy_loss_2 = advs * th.clamp(ratio, 1 - self.clip_range, 1 + self.clip_range)
 policy_loss = -th.min(policy_loss_1, policy_loss_2).mean()
 ```
 
-### C. Testing Suite: `stress_test_analytics.py`
+### C. Testing Suite: `stress_test_scratch.py`
 
 This script runs a rigorous evaluation of the trained model, focusing on edge cases that standard training metrics might miss.
 
@@ -289,7 +289,7 @@ This script runs a rigorous evaluation of the trained model, focusing on edge ca
 To test "Intelligence," we force the robot to start with low battery.
 
 ```python
-# From stress_test_analytics.py
+# From stress_test_scratch.py
 start_batt = np.random.uniform(0.15, 1.0) # Randomize battery
 env.battery = start_batt
 
@@ -336,24 +336,24 @@ The model `warehouse_strict_agent` was subjected to 1,000 randomized test episod
 
 | Metric           | Value   | Interpretation                                                |
 | :--------------- | :------ | :------------------------------------------------------------ |
-| **Duration**     | 38.06 s | The model is lightweight and highly performant.               |
-| **Success Rate** | 84.20%  | The agent successfully delivers the package most of the time. |
-| **Avg Steps**    | 23.3    | Matches the theoretical optimal path length for an 8×8 grid.  |
+| **Duration**     | 37.86 s | The model is lightweight and highly performant.               |
+| **Success Rate** | 90.90%  | The agent successfully delivers the package most of the time. |
+| **Avg Steps**    | 22.3    | Matches the theoretical optimal path length for an 8×8 grid.  |
 
 #### Failure Mode Analysis
 
-- **Battery Deaths (8.5%):** Occurs in "Impossible Scenarios" where the agent spawns with 15% battery but the charger is on the other side of the map (mathematically impossible to reach).
-- **Timeouts (7.3%):** Rare instances where the agent enters a loop.
+- **Battery Deaths (2.2%):** Occurs in "Impossible Scenarios" where the agent spawns with 15% battery but the charger is on the other side of the map (mathematically impossible to reach).
+- **Timeouts (7.9%):** Rare instances where the agent enters a loop.
 
 #### 🧠 Intelligence Check (The "Why it's Useful" Metric)
 
 This specific metric determines if the agent learned **Priority Management**.
 
 - **Scenario:** Battery starts below 30% (Critical).
-- **Total Critical Episodes:** 160
-- **Survived & Delivered:** 145
-- **Dead:** 15
-- **Survival Rate:** **90.6%**
+- **Total Critical Episodes:** 161
+- **Survived & Delivered:** 151
+- **Dead:** 10
+- **Survival Rate:** **93.8%**
 
 ### C. Visual Demonstration
 
@@ -381,25 +381,25 @@ Here is the trained agent in action.
 Ensure you have the required libraries installed:
 
 ```bash
-pip install torch numpy gymnasium stable-baselines3 tensorboard tqdm matplotlib imageio
+pip install -r requirements.txt
 ```
 
 ### 1. Training the Agent
 
-To train the agent using the robust PPO implementation (SB3 wrapper):
+To train the agent using the robust PPO implementation:
 
 ```bash
-python train_compare.py
+python ppo_scratch.py
 ```
 
-- **Output:** Generates `warehouse_strict_agent.zip` and TensorBoard logs in `./logs/strict/`.
+- **Output:** Generates `warehouse_strict_agent.pth` and TensorBoard logs in `./logs/strict/`.
 
 ### 2. Monitoring Training
 
 To visualize the graphs shown in the report:
 
 ```bash
-tensorboard --logdir ./logs/
+tensorboard --logdir=./logs/
 ```
 
 ### 3. Running Stress Tests
@@ -407,7 +407,7 @@ tensorboard --logdir ./logs/
 To generate the detailed statistics table:
 
 ```bash
-python stress_test_analytics.py
+python stress_test_scratch.py
 ```
 
 ### 4. Visual Demo (GIF Generation)
@@ -415,7 +415,7 @@ python stress_test_analytics.py
 To create a video file (`final_presentation_video.gif`) showing the agent in action:
 
 ```bash
-python create_demo.py
+python create_demo_scratch.py
 ```
 
 ---
